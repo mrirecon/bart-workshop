@@ -2,8 +2,9 @@
 
 ## Info
 * 3 minute pitch - __due Jan 10__
-* 16:9 aspect ratio
-
+  * 16:9 aspect ratio
+* 1.5 hour demo
+  * bring our own computer, keyboard, mouse
 ```
 Congratulations on being selected to present your software in Sedona on Tuesday night, Session 8.  The session will
 include a short 3-minute pitch from each of you about your software - which Michael Hansen, the organizer, may tell you
