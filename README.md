@@ -30,8 +30,10 @@ Jim
   * `pics` with
     * Wavelets
 	 * TV
-  * Multiscale/Low rank on DCE MRI
+    * Multiscale/Low rank on DCE MRI
   * GRASP
+    * build simplified recon script
+	 * demo full-fledged version
   * Wave-CS
   * phantom, slicing, fmaccing, and sampling tools
   * Matlab and python interface
