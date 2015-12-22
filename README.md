@@ -34,7 +34,22 @@ Jim
   * GRASP
   * Wave-CS
   * phantom, slicing, fmaccing, and sampling tools
+  * Matlab and python interface
 * Show how to make a simple recon tool with operators
   * rof denoising
   * partial-fourier
 
+
+## TODO List
+* Slides for pitch
+* Make demo walkthroughs/"ipython notebooks" and documenation
+* Gather datasets
+* Code changes:
+  * code documentation
+  * standardize help strings
+  * architecture changes? unlikely...
+* Website changes?
+  * move to wordpress
+  * add demos page
+  * Google Groups mailing list
+  * Github wiki
