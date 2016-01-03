@@ -12,9 +12,13 @@ trap handle_signal SIGABRT SIGTERM SIGINT SIGHUP SIGSEGV
 
 VIEWER="bart toimg"
 VIEWER=bartview.py
-VIEWER=viewer
+#VIEWER=viewer
 function cflview () {
-	$VIEWER $1
+	if [[ $VIEWER == "bart toimg" ]] ; then
+		$VIEWER $1 $1.png
+	else
+		$VIEWER $1
+	fi
 }
 
 function rmcfl () {
