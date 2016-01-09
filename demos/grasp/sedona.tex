@@ -1,0 +1,167 @@
+\documentclass{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{hyperref}
+
+%\setbeamersize{text margin left=0.1em}
+%\setbeamersize{text margin right=0.1em}
+
+
+
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\AC}{\mathrm{_{AC}}}
+
+\newcommand{\cWold}{\cV_\parallel^H \cV_\parallel}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\Gr}{{\cal G}_r}
+\newcommand{\Grold}{G_r^H G_r}
+
+
+
+\usetikzlibrary{arrows}
+
+\beamertemplatenavigationsymbolsempty
+\definecolor{myyellow}{rgb}{1.00,0.97,0.50}
+\definecolor{myalert}{rgb}{1.00,0.97,0.50}
+%\definecolor{myblue}{rgb}{0.75,0.75,1.00}
+\definecolor{myblue}{rgb}{1.,1.,1.00}
+%\definecolor{myblue}{rgb}{0.9,0.9,1.00}
+\definecolor{mygreen}{rgb}{0.70,0.82,0.79}
+\setbeamercolor{title}{fg=mygreen}
+\setbeamercolor{section in toc}{fg=mygreen}
+\setbeamercolor{frametitle}{fg=mygreen}
+\setbeamercolor{item}{fg=myblue}
+\setbeamercolor{normal text}{fg=myblue}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{structure}{bg=black}
+\setbeamercolor{alerted text}{fg=myalert}
+
+\setbeamercolor{frametitle}{bg=}
+
+
+\title{\large Example: Implementing GRASP with BART}
+
+
+
+\begin{document}
+
+
+
+
+
+\frame{\titlepage}
+\setbeamertemplate{logo}{}
+
+
+%\frame{
+%\frametitle{Content}
+%\tableofcontents
+%}
+
+
+%\setbeamertemplate{background canvas}{} 
+
+
+
+
+\begin{frame}
+\frametitle{pics: A Tool for Parallel Imaging Compressed Sensing}
+
+$>$ bart pics {\color{violet}-R}{\color{yellow}$A$}:{\color{blue}$B$}:{\color{cyan}$C$}:{\color{pink}$D$}
+	{\color{violet}-R} ... {\color{red}[-t trj]} kspace {\color{green}sens} image
+
+\vspace{0.5cm}
+\begin{itemize}
+\item {\color{green}parallel imaging} and compressed sensing
+\item {\color{red}non-Cartesian k-space trajectories}
+\item {\color{violet}multiple regularization terms}
+\item {\color{yellow}A:} different {\color{yellow}types of regularization}: \\
+		$\ell_2$, $\ell_1$, total variation,  $\ell_1$-wavelet, (multi-scale) low-rank
+\item {\color{blue}B: transforms} along {\color{blue}arbitrary dimensions} (space, time, etc.)
+\item {\color{cyan}C: joint-thresholding} along arbitrary dimensions
+\item {\color{pink}D: regularization parameter}
+\end{itemize}
+
+\vfill
+{\small
+Note: Depending on the algorithm additional parameters (step size, number of iterations, etc.)
+must be set for optimal results.}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Example: GRASP$^1$}
+
+Compressed sensing parallel imaging with a
+specific choice of sampling and regularization:
+\vspace{0.3cm}
+\begin{itemize}
+\item {\color{red}golden-ratio sampling$^2$}
+\item[$>$] bart {\color{red}traj -G -t trj}
+\vspace{0.3cm}
+\item {\color{yellow}total-variation regularization} in {\color{blue}time}
+\item[$>$] bart pics  -R{\color{yellow}T}:{\color{blue}\$(bart bitmask 10)}:0:{\color{pink}0.01}  {\color{red}-t trj} ksp {\color{green}sens} out
+\end{itemize}
+
+
+
+\vfill
+{\tiny
+\begin{itemize}
+\item[] {\bf 1.} Feng et al., Magn Reson Med 2013; 70:64-74.
+%\item[$^2$] Block et al., Magn Reson Med 2007;
+\item[] {\bf 2.} Winkelmann S et al., IEEE Trans Med Imaging 2007; 26:68-76.
+%\item[$^4$] Lustig et al., k-t SPARSE, ISMRM 2006; 14:2420.
+%\item[$^5$] Gamper et al., Magn Reson Med 2008; 59:365-373.
+\end{itemize}
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Calibration from non-Cartesian Data}
+
+\begin{itemize}
+\item inverse {\color{red}non-uniform} FFT 
+\item[$>$] bart {\color{red} nufft -i -t trj\_calib} ksp\_calib ksp2
+\vspace{0.2cm}
+\item {\color{green}calibration with ESPIRiT}
+\item[$>$] bart {\color{green}ecalib -m1} ksp2 {\color{green}sens}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Reformatting the Data}
+
+\begin{itemize}
+\item split continuous series of radial spokes 
+\item[$>$] bart reshape \$(bart bitmask 1 2) spokes phases ...
+\vspace{0.2cm}
+\item move phases into dimension 10
+\item[$>$] bart transpose 2 10 ...
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+
+\end{document}
+
