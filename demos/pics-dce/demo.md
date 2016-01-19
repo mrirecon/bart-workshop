@@ -34,6 +34,9 @@ function fft_interp () {
 	rmcfl $2.tmp
 	rmcfl $3.tmp
 }
+```
+
+---
 
 
 In this demo we will investigate prospectively under-sampled dynamic contrast enhanced (DCE) MRI data provided by [Tao
@@ -54,8 +57,8 @@ bart show -m data/ksp
 (we can also use the simpler command, `cat data/ksp.hdr`, as the header file is plain-text and describes the
 dimensions. However, the header file may change in the future so it is safer to use the `show` command.)
 
-The MRI-specific BART commands assume that the first three dimensions represent space/k-space, the next two dimensions
-represent coils and ESPIRiT maps, and the 10th dimensions (zero-indexing) represents temporal phases.
+The MRI-specific BART commands assume that the first three dimensions represent space/spatial k-space, the next two dimensions
+represent coils and ESPIRiT maps, and the 10th dimension (zero-indexing) represents temporal phases.
 We see the spatial dimensions are `1 X 68 x 180`, with 20 coils and 18 temporal phases.
 
 ---
@@ -100,6 +103,8 @@ bart fmac -s $(bart bitmask 10) data/pat_weights data/pat_weights_sum
 rmcfl o
 cflview data/pat_weights_sum & # visualize the result
 ```
+
+![](images/mask_compare.png?raw=true)
 
 ---
 
@@ -155,3 +160,7 @@ Combine the reconstructions and compare
 bart join 1 recon_wavtv recon_llr recon_compare # combine the reconstructions
 cflview recon_compare &
 ```
+
+![](images/recon_compare_00.png?raw=true)
+![](images/recon_compare_07.png?raw=true)
+![](images/recon_compare_17.png?raw=true)
