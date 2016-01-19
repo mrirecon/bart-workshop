@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 SCALE=0.6

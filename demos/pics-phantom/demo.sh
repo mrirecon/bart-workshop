@@ -3,6 +3,8 @@
 set -eu
 set -o pipefail
 
+set -x
+
 function handle_signal() {
     exit 1
 }
@@ -11,9 +13,9 @@ trap handle_signal SIGABRT SIGTERM SIGINT SIGHUP SIGSEGV
 TOOLBOX_PATH=${TOOLBOX_PATH?="TOOLBOX_PATH not set!"}
 export PATH=${TOOLBOX_PATH}:${PATH}
 
-VIEWER="bart toimg"
+#VIEWER="bart toimg"
 VIEWER=bartview.py
-VIEWER=viewer
+#VIEWER=viewer
 function cflview () {
 	if [[ $VIEWER == "bart toimg" ]] ; then
 		$VIEWER $1 $1.png
@@ -35,20 +37,16 @@ function rmcfl () {
 # Generate a 2D Shepp Logan phantom in k-space
 nmaps=8 # coil sensitivities
 dim=256 # ky/kz dims
+nmaps=8
 
-# make k-space and sensitivities separately
-bart phantom -x $dim -k ksp
-bart phantom -x $dim -S $nmaps maps_orig
-bart fft -iu 7 ksp img_orig
-bart fmac img maps_orig cimg_orig
-bart fft -u 7 cimg_orig ksp_orig
-rmcfl cimg_orig
+bart phantom -x $dim -k -s $nmaps ksp_orig
 
-# Add noise, based on SNR of k-space.
-#bart ones 1 1 o # dummy variable for summation
-#bart rss 0 ksp ksp_mag # take abs value of k-space
-#bart fmac -s `bart bitmask 0 1 2 3 4 5` ksp_mag o ksp_sum
-#noisevar=`bart show ksp_sum`
+
+# To match to the MRI-specific tools, we tranpose the spatial dimensions
+bart transpose 1 2 ksp_orig ksp_orig
+bart transpose 0 1 ksp_orig ksp_orig
+
+# Add noise
 noisevar=100
 bart noise -n $noisevar ksp_orig ksp_noise
 
@@ -74,7 +72,7 @@ cflview mask &
 
 # Coil compression
 ncc=6 # coil compression
-bart cc -P $ncc ksp_und ksp_und_cc
+bart cc -p $ncc ksp_und ksp_und_cc
 
 # ESPIRiT sensitivity map calibration
 bart ecalib -S ksp_und_cc maps
