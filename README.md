@@ -33,7 +33,7 @@ See the [Quick-Install guide](doc/quick-install.md) for quick installation instr
 
 
 ## Demos
-The `demos` directory contains standalone demos that show different BART use cases. The demos are self-documented within
+The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
 each directory, and are summarized below.
 
 1. Simulate phantom data and compare regularized reconstructions ([`pics-phantom`](demos/pics-phantom))
