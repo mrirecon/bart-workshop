@@ -75,12 +75,13 @@
 \frametitle{pics: A Tool for Parallel Imaging Compressed Sensing}
 
 $>$ bart pics {\color{violet}-R}{\color{yellow}$A$}:{\color{blue}$B$}:{\color{cyan}$C$}:{\color{pink}$D$}
-{\color{violet}-R} ... {\color{red}[-t pattern]} {\color{red}[-t trj]} kspace {\color{green}sens} image
+{\color{violet}-R} ... {\color{red}[-p pattern]} {\color{red}[-t trj]} kspace {\color{green}sens} image
 
 \vspace{0.5cm}
 \begin{itemize}
 \item {\color{green}parallel imaging} and compressed sensing
-\item {\color{red}non-Cartesian k-space trajectories and weighted sampling}
+\item {\color{red}non-Cartesian k-space trajectories}
+\item {\color{red}weighted sampling}
 \item {\color{violet}multiple regularization terms}
 \item {\color{yellow}A:} different {\color{yellow}types of regularization}: \\
 		$\ell_2$, $\ell_1$, total variation,  $\ell_1$-wavelet, (multi-scale) low-rank
@@ -107,8 +108,8 @@ specific choice of sampling and regularization:
 \begin{itemize}
 \item {VDRad sampling$^2$}
 \item {\color{red}Butterfly navigators$^3$}
-\vspace{0.3cm}
 \item {\color{yellow}Locally low rank regularization$^4$} (low rank with decimation in {\color{blue}space})
+\vspace{0.3cm}
 \item[$>$] bart pics -R{\color{yellow}L}:{\color{blue}\$(bart bitmask 0 1 2)}:{\color{blue}\$(bart bitmask 0 1
   2)}:{\color{pink}0.05}  {\color{red}-p weights} ksp {\color{green}sens} out
 \end{itemize}
