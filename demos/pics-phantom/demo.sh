@@ -3,16 +3,17 @@
 set -eu
 set -o pipefail
 
-set -x
-
 function handle_signal() {
     exit 1
 }
 trap handle_signal SIGABRT SIGTERM SIGINT SIGHUP SIGSEGV
 
+TOOLBOX_PATH=${TOOLBOX_PATH?="TOOLBOX_PATH not set!"}
+export PATH=${TOOLBOX_PATH}:${PATH}
+
 VIEWER="bart toimg"
 VIEWER=bartview.py
-#VIEWER=viewer
+VIEWER=viewer
 function cflview () {
 	if [[ $VIEWER == "bart toimg" ]] ; then
 		$VIEWER $1 $1.png
@@ -32,14 +33,14 @@ function rmcfl () {
 # multi-channel k-space data, add noise, and sample it with the Poisson disc tool
 
 # Generate a 2D Shepp Logan phantom in k-space
-nsens=8 # coil sensitivities
+nmaps=8 # coil sensitivities
 dim=256 # ky/kz dims
 
 # make k-space and sensitivities separately
 bart phantom -x $dim -k ksp
-bart phantom -x $dim -S $nsens sens_orig
+bart phantom -x $dim -S $nmaps maps_orig
 bart fft -iu 7 ksp img_orig
-bart fmac img sens_orig cimg_orig
+bart fmac img maps_orig cimg_orig
 bart fft -u 7 cimg_orig ksp_orig
 rmcfl cimg_orig
 
@@ -76,24 +77,24 @@ ncc=6 # coil compression
 bart cc -P $ncc ksp_und ksp_und_cc
 
 # ESPIRiT sensitivity map calibration
-bart ecalib -S ksp_und_cc sens
+bart ecalib -S ksp_und_cc maps
 
 # View the sensitivities
-cflview sens &
+cflview maps &
 
 # ESPIRiT reconstruction
 l2=.01
-bart pics -R Q:$l2 -S ksp_und_cc sens img_recon0
+bart pics -R Q:$l2 -S ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_l2 # remove the extra map
 
 # L1-ESPIRiT with Wavelets
 l1wav=.008
-bart pics -S -R W:7:0:$l1wav ksp_und_cc sens img_recon0
+bart pics -S -R W:7:0:$l1wav ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_wav # remove the extra map
 
 # L1-ESPIRiT with Total Variation
 l1tv=.008
-bart pics -S -R T:7:0:$l1tv ksp_und_cc sens img_recon0
+bart pics -S -R T:7:0:$l1tv ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_tv # remove the extra map
 rmcfl img_recon0
 
