@@ -1,2 +1,13 @@
 *.swp
 scratch/
+
+# latex files
+*.log
+*.nav
+*.out
+*.toc
+*.snm
+*.aux
+*.latexmk
+*.fdb_latexmk
+*.fls
