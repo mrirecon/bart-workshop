@@ -1,5 +1,9 @@
+First let's add BART to our system path. Make sure `TOOLBOX_PATH` is set to the location of BART.
+```bash
+export PATH=${TOOLBOX_PATH}:${PATH}
+```
 
-First define our viewer to save images to png
+Define our viewer to save images to png
 ```bash
 VIEWER="bart toimg"
 function cflview () {
@@ -126,29 +130,3 @@ bart join 2 img_noise img_zf recon_l2 recon_wav recon_tv img_compare
 cflview img_compare &
 ```
 ![](images/img_compare.png?raw=true)
-
-# Coil combine
-fft -i -u 6 kSlice coil_images
-fmac -C -s 8 coil_images map im
-
-# TV denoise
-rof 20000 6 im im2
-
-# Coil split
-fmac map im2 coil_images2
-fft -u 6 coil_images2 kSlice2
-
-# Data consistency
-
-pattern kSlice pat
-
-ones 3 1 256 184 uno
-saxpy -- -1.0 pat uno antipat
-
-fmac antipat kSlice2 kSlice2_new
-saxpy 1 kSlice kSlice2_new kSlice3
-
-fft -i -u 6 kSlice3 coil_images3
-fmac -C -s 8 coil_images3 map im3
-
-
