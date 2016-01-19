@@ -1,0 +1,326 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>demo_wave_cs</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-01-19"><meta name="DC.source" content="demo_wave_cs.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Wave-Caipi Compressed Sensing Demo</a></li><li><a href="#2">Load normal GRE data</a></li><li><a href="#3">Generate ESPIRiT map</a></li><li><a href="#4">Load Wave-Caipi data and visualize</a></li><li><a href="#5">Reconstruct Wave-Caipi using FFT</a></li><li><a href="#6">Load point spread function and visualize</a></li><li><a href="#7">Fully sampled Wave reconstruction step-by-step</a></li><li><a href="#8">Fully sampled Wave reconstruction using BART</a></li><li><a href="#9">Generate poisson disk undersampling mask</a></li><li><a href="#10">Undersample Wave-Caipi data</a></li><li><a href="#11">Zero-filled reconstruction</a></li><li><a href="#12">L2 recon for wave gre</a></li><li><a href="#13">L1 recon for wave gre</a></li></ul></div><h2>Wave-Caipi Compressed Sensing Demo<a name="1"></a></h2><p>This demo demonstrates ESPRiT reconstruction on Wave-Caipi data using the Berkeley Advanced Reconstruction Toolbox (BART) The datasets are kindly provided by Dr. Berkin at the MGH. The datasets are coil-compressed for computational efficiency. !!! Note that this is for tutorial purpose only. The dataset has been highly compressed to the point that the results do not look good.</p><pre class="codeinput">clear
+close <span class="string">all</span>
+orientation = [-2,1,3]; <span class="comment">% Plot tool orientation</span>
+addpath(<span class="string">'plot'</span>);
+</pre><h2>Load normal GRE data<a name="2"></a></h2><p>We first load a "normal" GRE dataset to generate sensitivity maps for Wave-Caipi reconstruction.</p><pre class="codeinput"><span class="comment">% Read kspace</span>
+kspace_gre = readcfl(<span class="string">'data/kspace_gre'</span>);
+
+figure, imshow3f( abs(kspace_gre).^0.1, orientation ), drawnow
+titlef(<span class="string">'Normal GRE kspace'</span>);
+
+<span class="comment">% IFFT</span>
+img_gre = bart(<span class="string">'fft -i 7'</span>, kspace_gre);
+
+figure, imshow4f( abs(img_gre), orientation ), drawnow
+titlef(<span class="string">'Normal GRE coil images'</span>);
+
+<span class="comment">% Root sum of squares</span>
+img_gre_sos = bart(<span class="string">'rss 8'</span>, img_gre);
+
+figure, imshow3f( img_gre_sos, orientation ), drawnow
+titlef(<span class="string">'Normal GRE sum of squares'</span>);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_01.png" alt=""> <img vspace="5" hspace="5" src="demo_wave_cs_02.png" alt=""> <img vspace="5" hspace="5" src="demo_wave_cs_03.png" alt=""> <h2>Generate ESPIRiT map<a name="3"></a></h2><p>We will now generate sensitivity maps using ESPIRiT The maps will also be used by Wave-Caipi reconstruction later on.</p><pre class="codeinput"><span class="comment">% Calibration size</span>
+calib_size = 16;
+
+<span class="comment">% ESPIRiT Calibration</span>
+maps = bart(sprintf(<span class="string">'bart ecalib -r %d -c 0.3 -m 1'</span>, calib_size), kspace_gre);
+<span class="comment">% maps = readcfl('data/maps_gre');</span>
+
+<span class="comment">% Plot</span>
+figure, imshow4f( maps )
+</pre><pre class="codeoutput">Done.
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_04.png" alt=""> <h2>Load Wave-Caipi data and visualize<a name="4"></a></h2><pre class="codeinput">kspace_wave = readcfl(<span class="string">'data/kspace_wave'</span>);
+
+[Nx, Ny, Nz, Nc] = size(kspace_wave);
+
+figure,imshow4f( abs(kspace_wave).^0.1 , [2,3,1]);
+titlef(<span class="string">'Wave-Caipi kspace data'</span>);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_05.png" alt=""> <h2>Reconstruct Wave-Caipi using FFT<a name="5"></a></h2><p>The wrong way of reconstructing Wave-Caipi data</p><pre class="codeinput"><span class="comment">% IFFT</span>
+img_direct = bart(<span class="string">'fft -i 7'</span>, kspace_wave);
+
+<span class="comment">% Root sum of squares</span>
+img_direct_rss = bart(<span class="string">'rss 8'</span>, img_direct);
+
+figure,imshow3f( img_direct_rss, orientation);
+titlef(<span class="string">'Wave-Caipi FFT Reconstruction (The Wrong Way)'</span>);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_06.png" alt=""> <h2>Load point spread function and visualize<a name="6"></a></h2><pre class="codeinput">psf = readcfl(<span class="string">'data/psf'</span>);
+
+figure, imshow3f( angle(psf), orientation );
+titlef(<span class="string">'Wave-Caipi Point Spread Function Phase'</span>);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_07.png" alt=""> <h2>Fully sampled Wave reconstruction step-by-step<a name="7"></a></h2><p>The correct way to reconstruct a wave-caipi data is to first perform a ifft along the phase encoding directions, compensate for the point spread function and then perform another ifft along the readout direction.</p><pre class="codeinput"><span class="comment">% IFFT y and z</span>
+kspace_yz = bart(<span class="string">'fft -i 6'</span>, kspace_wave);
+
+<span class="comment">% Compensate for PSF</span>
+kspace_yz_psf = kspace_yz .* repmat(conj(psf), [1,1,1,Nc]);
+
+<span class="comment">% IFFT x</span>
+img_wave = bart(<span class="string">'fft -i 1'</span>, kspace_yz_psf);
+
+<span class="comment">% Root sum of squares</span>
+img_wave_rss = bart(<span class="string">'rss 8'</span>, img_wave);
+
+<span class="comment">% Plot</span>
+figure,imshow3f( img_wave, orientation);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_08.png" alt=""> <h2>Fully sampled Wave reconstruction using BART<a name="8"></a></h2><p>Alternatively, the entire reconstruction operator is incorporated in BART. For fully-sampled image, the adjoint option (-a) performs the above steps exactly.</p><pre class="codeinput"><span class="comment">% Wave-Caipi reconstruction</span>
+img_wave = bart(<span class="string">'wave -a'</span>, kspace_wave, maps, psf);
+
+<span class="comment">% Plot</span>
+figure,imshow3f( img_wave, orientation);
+</pre><pre class="codeoutput">Size: 3010560 Samples: 3010560 Acc: 1.00
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_09.png" alt=""> <h2>Generate poisson disk undersampling mask<a name="9"></a></h2><p>We will now genereate a 1.5 x 1.5 poisson disk undersampling mask</p><pre class="codeinput">Ry = 1.5;     <span class="comment">% ky acceleration factor</span>
+Rz = 1.5;     <span class="comment">% kz acceleration factor</span>
+mask = bart(sprintf(<span class="string">'poisson -Y %d -Z %d -y %d -z %d'</span>,<span class="keyword">...</span>
+    Ny,Nz, Ry, Rz));
+
+figure,imshow3f(abs(squeeze(mask)))
+
+mask = repmat(mask, [Nx,1,1,Nc]);
+</pre><pre class="codeoutput">points: 5908, grid size: 224x60 = 13440 (R = 2.274882)
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_10.png" alt=""> <h2>Undersample Wave-Caipi data<a name="10"></a></h2><p>We now undersample the wave caipi data by multiplying with the sampling mask</p><pre class="codeinput">kspace_wave_und = kspace_wave .* mask;
+figure,imshow4f( abs(kspace_wave_und).^0.1 , [2,3,1]);
+titlef(<span class="string">'Wave-Caipi undersampled kspace data'</span>);
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_11.png" alt=""> <h2>Zero-filled reconstruction<a name="11"></a></h2><p>We can perform a zero-filled reconstruction by using the wave -a adjoint option again.</p><pre class="codeinput">img_recon_zero = bart(<span class="string">'wave -a'</span>, kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_zero, orientation);
+titlef(<span class="string">'Wave-Caipi Zero-filled Reconstruction'</span>);
+</pre><pre class="codeoutput">Size: 3010560 Samples: 1321376 Acc: 2.28
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_12.png" alt=""> <h2>L2 recon for wave gre<a name="12"></a></h2><p>We can perform an L2 reconstruction by adding regularization weight -r 0.01</p><pre class="codeinput">img_recon_l2 = bart(<span class="string">'wave -r 0.01'</span>, kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_l2, orientation);
+titlef(<span class="string">'Wave-Caipi L2 Conjugate gradient Reconstruction'</span>);
+</pre><pre class="codeoutput">Size: 3010560 Samples: 1321376 Acc: 2.28
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_13.png" alt=""> <h2>L1 recon for wave gre<a name="13"></a></h2><p>We can perform an L1 reconstruction by specifying the flag -l and adding regularization weight -r 0.01</p><pre class="codeinput">img_recon_l1 = bart(<span class="string">'wave -l -r 0.01'</span>, kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_l1, orientation);
+titlef(<span class="string">'Wave-CS Reconstruction'</span>);
+</pre><pre class="codeoutput">Size: 3010560 Samples: 1321376 Acc: 2.28
+</pre><img vspace="5" hspace="5" src="demo_wave_cs_14.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Wave-Caipi Compressed Sensing Demo
+% This demo demonstrates ESPRiT reconstruction on Wave-Caipi data using the
+% Berkeley Advanced Reconstruction Toolbox (BART)
+% The datasets are kindly provided by Dr. Berkin at the MGH.
+% The datasets are coil-compressed for computational efficiency.
+% !!! Note that this is for tutorial purpose only. The dataset has been
+% highly compressed to the point that the results do not look good.
+
+clear
+close all
+orientation = [-2,1,3]; % Plot tool orientation
+addpath('plot');
+
+%% Load normal GRE data
+% We first load a "normal" GRE dataset to generate sensitivity maps for
+% Wave-Caipi reconstruction. 
+
+% Read kspace
+kspace_gre = readcfl('data/kspace_gre');
+
+figure, imshow3f( abs(kspace_gre).^0.1, orientation ), drawnow
+titlef('Normal GRE kspace');
+
+% IFFT
+img_gre = bart('fft -i 7', kspace_gre);
+
+figure, imshow4f( abs(img_gre), orientation ), drawnow
+titlef('Normal GRE coil images');
+
+% Root sum of squares
+img_gre_sos = bart('rss 8', img_gre);
+
+figure, imshow3f( img_gre_sos, orientation ), drawnow
+titlef('Normal GRE sum of squares');
+
+%% Generate ESPIRiT map
+% We will now generate sensitivity maps using ESPIRiT
+% The maps will also be used by Wave-Caipi reconstruction later on.
+
+% Calibration size
+calib_size = 16;       
+
+% ESPIRiT Calibration
+maps = bart(sprintf('bart ecalib -r %d -c 0.3 -m 1', calib_size), kspace_gre);
+% maps = readcfl('data/maps_gre');
+
+% Plot
+figure, imshow4f( maps )
+
+
+%% Load Wave-Caipi data and visualize
+kspace_wave = readcfl('data/kspace_wave');
+
+[Nx, Ny, Nz, Nc] = size(kspace_wave);
+
+figure,imshow4f( abs(kspace_wave).^0.1 , [2,3,1]);
+titlef('Wave-Caipi kspace data');
+
+%% Reconstruct Wave-Caipi using FFT
+% The wrong way of reconstructing Wave-Caipi data
+
+% IFFT
+img_direct = bart('fft -i 7', kspace_wave);
+
+% Root sum of squares
+img_direct_rss = bart('rss 8', img_direct);
+
+figure,imshow3f( img_direct_rss, orientation);
+titlef('Wave-Caipi FFT Reconstruction (The Wrong Way)');
+
+%% Load point spread function and visualize
+
+psf = readcfl('data/psf');
+
+figure, imshow3f( angle(psf), orientation );
+titlef('Wave-Caipi Point Spread Function Phase');
+
+%% Fully sampled Wave reconstruction step-by-step
+% The correct way to reconstruct a wave-caipi data is to first perform a
+% ifft along the phase encoding directions, compensate for the point spread
+% function and then perform another ifft along the readout direction.
+
+% IFFT y and z
+kspace_yz = bart('fft -i 6', kspace_wave);
+
+% Compensate for PSF
+kspace_yz_psf = kspace_yz .* repmat(conj(psf), [1,1,1,Nc]);
+
+% IFFT x
+img_wave = bart('fft -i 1', kspace_yz_psf);
+
+% Root sum of squares
+img_wave_rss = bart('rss 8', img_wave);
+
+% Plot
+figure,imshow3f( img_wave, orientation);
+
+%% Fully sampled Wave reconstruction using BART
+% Alternatively, the entire reconstruction operator is incorporated in
+% BART. For fully-sampled image, the adjoint option (-a) performs the above
+% steps exactly.
+
+% Wave-Caipi reconstruction 
+img_wave = bart('wave -a', kspace_wave, maps, psf);
+
+% Plot
+figure,imshow3f( img_wave, orientation);
+
+
+%% Generate poisson disk undersampling mask
+% We will now genereate a 1.5 x 1.5 poisson disk undersampling mask
+
+Ry = 1.5;     % ky acceleration factor
+Rz = 1.5;     % kz acceleration factor
+mask = bart(sprintf('poisson -Y %d -Z %d -y %d -z %d',...
+    Ny,Nz, Ry, Rz));
+
+figure,imshow3f(abs(squeeze(mask)))
+
+mask = repmat(mask, [Nx,1,1,Nc]);
+
+
+%% Undersample Wave-Caipi data
+% We now undersample the wave caipi data by multiplying with the sampling
+% mask
+
+kspace_wave_und = kspace_wave .* mask;
+figure,imshow4f( abs(kspace_wave_und).^0.1 , [2,3,1]);
+titlef('Wave-Caipi undersampled kspace data');
+
+%% Zero-filled reconstruction
+% We can perform a zero-filled reconstruction by using the wave -a adjoint
+% option again.
+
+img_recon_zero = bart('wave -a', kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_zero, orientation);
+titlef('Wave-Caipi Zero-filled Reconstruction');
+
+%% L2 recon for wave gre
+% We can perform an L2 reconstruction by adding regularization weight -r 0.01
+
+img_recon_l2 = bart('wave -r 0.01', kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_l2, orientation);
+titlef('Wave-Caipi L2 Conjugate gradient Reconstruction');
+
+%% L1 recon for wave gre
+% We can perform an L1 reconstruction by specifying the flag -l and 
+% adding regularization weight -r 0.01
+
+img_recon_l1 = bart('wave -l -r 0.01', kspace_wave_und, maps, psf);
+
+figure,imshow3f(img_recon_l1, orientation);
+titlef('Wave-CS Reconstruction');
+
+
+
+##### SOURCE END #####
+--></body></html>
