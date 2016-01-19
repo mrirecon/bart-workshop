@@ -99,7 +99,7 @@ To sum over the temporal dimension, we create a BART file containing a single en
 10th dimension:
 ```bash
 bart ones 1 1 o
-bart fmac -s $(bart bitmask 10) data/pat_weights data/pat_weights_sum
+bart fmac -s $(bart bitmask 10) data/pat_weights o data/pat_weights_sum
 rmcfl o
 cflview data/pat_weights_sum & # visualize the result
 ```
