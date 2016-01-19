@@ -104,21 +104,21 @@ cflview maps &
 ESPIRiT reconstruction
 ```bash
 l2=.01
-bart pics -R Q:$l2 -S ksp_und_cc maps img_recon0
+bart pics -d5 -R Q:$l2 -S ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_l2 # remove the extra map
 ```
 
 L1-ESPIRiT with Wavelets
 ```bash
 l1wav=.008
-bart pics -S -R W:7:0:$l1wav ksp_und_cc maps img_recon0
+bart pics -d5 -S -R W:7:0:$l1wav ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_wav # remove the extra map
 ```
 
 L1-ESPIRiT with Total Variation
 ```bash
 l1tv=.008
-bart pics -S -R T:7:0:$l1tv ksp_und_cc maps img_recon0
+bart pics -d5 -S -R T:7:0:$l1tv ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_tv # remove the extra map
 rmcfl img_recon0
 ```

@@ -64,14 +64,14 @@ rmcfl o
 cflview pat_weights_sum & # visualize the result
 
 # Reconstruct with l1-wavelets in space and total variation in time
-bart pics -i 100 -p $weights -R T:$(bart bitmask 10):0:.02 -R W:$(bart bitmask 0 1 2):0:0.001 $ksp $maps recon_wavtv
+bart pics -d5 -i 100 -p $weights -R T:$(bart bitmask 10):0:.02 -R W:$(bart bitmask 0 1 2):0:0.001 $ksp $maps recon_wavtv
 bart slice 4 0 recon_wavtv tmp001 # throw out second ESPIRiT image
 
 ## FFT-interpolate
 fft_interp 80 tmp001 recon_wavtv
 
 # Reconstruct with locally low rank across space and time
-bart pics -i 100 -p $weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 $ksp $maps recon_llr
+bart pics -d5 -i 100 -p $weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 $ksp $maps recon_llr
 bart slice 4 0 recon_llr tmp001 # throw out second ESPIRiT image
 
 ## FFT-interpolate

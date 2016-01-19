@@ -135,7 +135,7 @@ bart pics -Rh
 
 First let's reconstruct with l1-wavelets in space and total variation in time.
 ```bash
-bart pics -i 100 -p data/weights -R T:$(bart bitmask 10):0:.02 -R W:$(bart bitmask 0 1 2):0:0.001 data/ksp data/maps recon_wavtv
+bart pics -d5 -i 100 -p data/weights -R T:$(bart bitmask 10):0:.02 -R W:$(bart bitmask 0 1 2):0:0.001 data/ksp data/maps recon_wavtv
 bart slice 4 0 recon_wavtv tmp001 # throw out second ESPIRiT image
 bart flip 0 tmp001 recon_wavtv
 rmcfl tmp001
@@ -148,7 +148,7 @@ fft_interp 80 recon_wavtv recon_wavtv
 
 Next let's reconstruct using locally low rank (LLR).
 ```bash
-bart pics -i 100 -p data/weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 data/ksp data/maps recon_llr
+bart pics -d5 -i 100 -p data/weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 data/ksp data/maps recon_llr
 bart slice 4 0 recon_llr tmp001 # throw out second ESPIRiT image
 bart flip 0 tmp001 recon_llr
 rmcfl tmp001
