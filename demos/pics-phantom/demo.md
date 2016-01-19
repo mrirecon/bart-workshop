@@ -32,10 +32,16 @@ the Poisson disc `poisson` tool.
 First set the parameters. The `-x` flag specifies the 2D dimensions. The `-k` flag creates the phantom directly in k-space.
 The `-s` flag specifies the number of coil sensitivities.
 ```bash
-nsens=8 # coil sensitivities
+nmaps=8 # coil sensitivities
 ncc=6 # coil compression
 dim=256 # ky/kz dims
-bart phantom -x $dim -k -s $nsens ksp_orig
+bart phantom -x $dim -k -s $nmaps ksp_orig
+```
+
+To match to the MRI-specific tools, we tranpose the spatial dimensions
+```
+bart transpose 1 2 ksp_orig ksp_orig
+bart transpose 0 1 ksp_orig ksp_orig
 ```
 
 Add noise
@@ -81,38 +87,38 @@ following:
 
 Coil compression
 ```bash
-bart cc -P $ncc ksp_und ksp_und_cc
+bart cc -p $ncc ksp_und ksp_und_cc
 ```
 
 ESPIRiT sensitivity map calibration
 ```bash
-bart ecalib -S ksp_und_cc sens
+bart ecalib -S ksp_und_cc maps
 ```
 
 View the sensitivities
 ```bash
-cflview sens &
+cflview maps &
 ```
 ![](images/sens-0000.png?raw=true)
 
 ESPIRiT reconstruction
 ```bash
 l2=.01
-bart pics -R Q:$l2 -S ksp_und_cc sens img_recon0
+bart pics -R Q:$l2 -S ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_l2 # remove the extra map
 ```
 
 L1-ESPIRiT with Wavelets
 ```bash
 l1wav=.008
-bart pics -S -R W:7:0:$l1wav ksp_und_cc sens img_recon0
+bart pics -S -R W:7:0:$l1wav ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_wav # remove the extra map
 ```
 
 L1-ESPIRiT with Total Variation
 ```bash
 l1tv=.008
-bart pics -S -R T:7:0:$l1tv ksp_und_cc sens img_recon0
+bart pics -S -R T:7:0:$l1tv ksp_und_cc maps img_recon0
 bart slice 4 0 img_recon0 recon_tv # remove the extra map
 rmcfl img_recon0
 ```
