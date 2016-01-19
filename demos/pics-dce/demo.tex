@@ -1,0 +1,132 @@
+\documentclass{beamer}
+%\documentclass[aspectratio=169]{beamer}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{hyperref}
+
+%\setbeamersize{text margin left=0.1em}
+%\setbeamersize{text margin right=0.1em}
+
+
+
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\AC}{\mathrm{_{AC}}}
+
+\newcommand{\cWold}{\cV_\parallel^H \cV_\parallel}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\Gr}{{\cal G}_r}
+\newcommand{\Grold}{G_r^H G_r}
+
+
+
+\usetikzlibrary{arrows}
+
+\beamertemplatenavigationsymbolsempty
+\definecolor{myyellow}{rgb}{1.00,0.97,0.50}
+\definecolor{myalert}{rgb}{1.00,0.97,0.50}
+%\definecolor{myblue}{rgb}{0.75,0.75,1.00}
+\definecolor{myblue}{rgb}{1.,1.,1.00}
+%\definecolor{myblue}{rgb}{0.9,0.9,1.00}
+\definecolor{mygreen}{rgb}{0.70,0.82,0.79}
+\setbeamercolor{title}{fg=mygreen}
+\setbeamercolor{section in toc}{fg=mygreen}
+\setbeamercolor{frametitle}{fg=mygreen}
+\setbeamercolor{item}{fg=myblue}
+\setbeamercolor{normal text}{fg=myblue}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{structure}{bg=black}
+\setbeamercolor{alerted text}{fg=myalert}
+
+\setbeamercolor{frametitle}{bg=}
+
+
+\title{\large Demo: Reconstructing Cartesian DCE data with BART}
+
+
+
+\begin{document}
+
+
+
+
+
+\frame{\titlepage}
+\setbeamertemplate{logo}{}
+
+
+%\frame{
+%\frametitle{Content}
+%\tableofcontents
+%}
+
+
+%\setbeamertemplate{background canvas}{} 
+
+
+
+
+\begin{frame}
+\frametitle{pics: A Tool for Parallel Imaging Compressed Sensing}
+
+$>$ bart pics {\color{violet}-R}{\color{yellow}$A$}:{\color{blue}$B$}:{\color{cyan}$C$}:{\color{pink}$D$}
+{\color{violet}-R} ... {\color{red}[-t pattern]} {\color{red}[-t trj]} kspace {\color{green}sens} image
+
+\vspace{0.5cm}
+\begin{itemize}
+\item {\color{green}parallel imaging} and compressed sensing
+\item {\color{red}non-Cartesian k-space trajectories and weighted sampling}
+\item {\color{violet}multiple regularization terms}
+\item {\color{yellow}A:} different {\color{yellow}types of regularization}: \\
+		$\ell_2$, $\ell_1$, total variation,  $\ell_1$-wavelet, (multi-scale) low-rank
+\item {\color{blue}B: transforms} along {\color{blue}arbitrary dimensions} (space, time, etc.)
+\item {\color{cyan}C: joint-thresholding} along arbitrary dimensions
+\item {\color{pink}D: regularization parameter}
+\end{itemize}
+
+\vfill
+{\small
+Note: Depending on the algorithm additional parameters (step size, number of iterations, etc.)
+must be set for optimal results.}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Example: Cartesian DCE MRI$^1$}
+
+Compressed sensing parallel imaging with a
+specific choice of sampling and regularization:
+\vspace{0.3cm}
+\begin{itemize}
+\item {VDRad sampling$^2$}
+\item {\color{red}Butterfly navigators$^3$}
+\vspace{0.3cm}
+\item {\color{yellow}Locally low rank regularization} (low rank with decimation in {\color{blue}space})
+\item[$>$] bart pics -R{\color{yellow}L}:{\color{blue}\$(bart bitmask 0 1 2)}:{\color{blue}\$(bart bitmask 0 1
+  2)}:{\color{pink}0.05}  {\color{red}-p weights} ksp {\color{green}sens} out
+\end{itemize}
+
+
+
+\vfill
+{\tiny
+\begin{itemize}
+\item[] {\bf 1.} Zhang et al., JMRI 2015; 41:460-73.
+\item[] {\bf 2.} Cheng et al., MRM 2014; 42:407-20.
+\item[] {\bf 3.} Cheng et al., MRM 2012; 68:1785-97.
+\end{itemize}
+}
+
+\end{frame}
+
+
+
+\end{document}
+
