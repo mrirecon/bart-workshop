@@ -71,7 +71,7 @@ bart slice 4 0 recon_wavtv tmp001 # throw out second ESPIRiT image
 fft_interp 80 tmp001 recon_wavtv
 
 # Reconstruct with locally low rank across space and time
-bart pics -i 100 -p $weights -R L:$(bart bitmask 0 1 2):0:0.05 $ksp $maps recon_llr
+bart pics -i 100 -p $weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 $ksp $maps recon_llr
 bart slice 4 0 recon_llr tmp001 # throw out second ESPIRiT image
 
 ## FFT-interpolate

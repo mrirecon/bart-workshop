@@ -148,7 +148,7 @@ fft_interp 80 recon_wavtv recon_wavtv
 
 Next let's reconstruct using locally low rank (LLR).
 ```bash
-bart pics -i 100 -p data/weights -R L:$(bart bitmask 0 1 2):0:0.05 data/ksp data/maps recon_llr
+bart pics -i 100 -p data/weights -R L:$(bart bitmask 0 1 2):$(bart bitmask 0 1 2):0.05 data/ksp data/maps recon_llr
 bart slice 4 0 recon_llr tmp001 # throw out second ESPIRiT image
 bart flip 0 tmp001 recon_llr
 rmcfl tmp001
