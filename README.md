@@ -1,7 +1,7 @@
 # BART Workshop Materials
 
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
-Part of this material will be presented at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
+This material was presented at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
 
 ## Purpose
 The purpose of this repository is to host and share demos and workshop materials for BART. From the [website](http://mrirecon.github.io/bart):
