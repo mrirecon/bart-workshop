@@ -3,6 +3,9 @@ The quick-install instructions should be enough to get started for Linux or Mac 
 See the [README](https://github.com/mrirecon/bart/blob/master/README) for full installation instructions,
 including Windows support.
 
+These instructions are for [BART version 0.3.00](https://github.com/mrirecon/bart/releases/tag/v0.3.00). Newer versions
+of BART may use slightly different syntax, e.g. `CUDA_BASE` instead of `cuda.top`
+
 ### Install the required dependencies.
 For Linux,
 ```bash
