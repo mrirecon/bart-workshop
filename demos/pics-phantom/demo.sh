@@ -40,9 +40,8 @@ nmaps=8
 bart phantom -x $dim -k -s $nmaps ksp_orig
 
 
-# To match to the MRI-specific tools, we tranpose the spatial dimensions
-bart transpose 1 2 ksp_orig ksp_orig
-bart transpose 0 1 ksp_orig ksp_orig
+# To match to the MRI-specific tools, we reshape the spatial dimensions
+bart reshape 7 1 $dim $dim ksp_orig ksp_orig
 
 # Add noise
 noisevar=100
