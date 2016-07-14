@@ -98,7 +98,7 @@ View the sensitivities
 ```bash
 cflview maps &
 ```
-![](images/sens-0000.png?raw=true)
+![](images/sens.png?raw=true)
 
 ESPIRiT reconstruction
 ```bash
