@@ -3,8 +3,8 @@ The quick-install instructions should be enough to get started for Linux or Mac 
 See the [README](https://github.com/mrirecon/bart/blob/master/README) for full installation instructions,
 including Windows support.
 
-These instructions are for [BART version 0.3.00](https://github.com/mrirecon/bart/releases/tag/v0.3.00). Newer versions
-of BART may use slightly different syntax, e.g. `CUDA_BASE` instead of `cuda.top`
+These instructions are for [BART version 0.3.01](https://github.com/mrirecon/bart/releases/tag/v0.3.01). Newer versions
+of BART may require slightly different instructions.
 
 ### Install the required dependencies.
 For Linux,
@@ -17,29 +17,24 @@ For Mac OS X, using macports,
 sudo port install fftw-3-single gcc47 libpng
 ```
 
-Optionally, install [CUDA](https://developer.nvidia.com/cuda-downloads) and
-[ACML](http://developer.amd.com/tools-and-sdks/archive/amd-core-math-library-acml/acml-downloads-resources/). Note ACML
-is not supported under Mac OS X.
+Optionally, install [CUDA](https://developer.nvidia.com/cuda-downloads).
 
 ### Configure local Makefile paths
 Make a local Makefile to configure paths specific to your system. Change these defaults as desired.
 ```bash
 echo "PARALLEL=1 # speed up build" > Makefile.local
 echo "CUDA=1 # compile with CUDA support" >> Makefile.local
-echo "cuda.top := /usr/local/cuda" >> Makefile.local
+echo "CUDA_BASE := /usr/local/cuda" >> Makefile.local
 ```
 
-For Linux,
+For Mac, also add
 ```bash
-echo "ACML=1 # compile with ACML support" >> Makefile.local
-echo "acml.top := /usr/local/acml5.3.1/gfortran64_mp_int64" >> Makefile.local
+echo "FFTW_BASE := /opt/local/" >> Makefile.local
 ```
 
-For Mac,
-```bash
-echo "ACML=0 # No ACML support on Mac" >> Makefile.local
-echo "fftw.top := /opt/local/" >> Makefile.local
-```
+It is also possible to install on Mac using Homebrew. See 
+[Homebrew BART](https://github.com/mrirecon/homebrew-bart)
+for more information
 
 ### Build the source code
 Under the `bart/` directory, run
@@ -50,17 +45,18 @@ This will build the binary `bart`, which is the entry point to the command-line 
 ```bash
 ./bart
 #BART. Available commands are:
-#bench       bitmask     bpsense     caldir      calmat      cc
-#cdf97       circshift   conj        conv        cpyphs      creal
-#crop        ecalib      ecaltwo     estdims     estvar      extract
-#fakeksp     fft         fftmod      fftshift    filter      flip
-#fmac        homodyne    itsense     join        lrmatrix    mip
-#nlinv       noise       normalize   nrmse       nufft       ones
-#pattern     phantom     pics        pocsense    poisson     repmat
-#reshape     resize      rof         rsense      rss         sake
-#saxpy       scale       sdot        show        slice       spow
-#svd         threshold   toimg       traj        transpose   twixread
-#version     walsh       wave        zeros
+#bench       bitmask     bpsense     caldir      calmat      carg
+#cc          cdf97       circshift   conj        conv        cpyphs
+#creal       crop        ecalib      ecaltwo     estdims     estvar
+#extract     fakeksp     fft         fftmod      fftshift    filter
+#flip        fmac        homodyne    itsense     join        lrmatrix
+#mip         nlinv       noise       normalize   nrmse       nufft
+#ones        pattern     phantom     pics        pocsense    poisson
+#repmat      reshape     resize      rof         rsense      rss
+#sake        saxpy       scale       sdot        show        slice
+#spow        sqpics      svd         threshold   toimg       traj
+#transpose   twixread    version     walsh       wave        wavg
+#zeros
 ```
 
 ### Add BART to the path 
@@ -69,9 +65,18 @@ Under the `bart/` directory, run
 source vars.sh
 ```
 This adds the `bart` tool and the `TOOLBOX_PATH` environment variable to your session,
-To add this for future sessions, append this line to your `.bashrc`.
+To add this for future sessions, append the following lines to your `.bashrc`.
+```bash
+export TOOLBOX_PATH=/path/to/bart
+export PATH=${TOOLBOX_PATH}:${PATH}
+```
 
 ### Test
+Query the installed version with the command:
+```bash
+bart version
+#v0.3.01
+```
 Test the installation by benchmarking the toolbox:
 ```bash
 bart bench

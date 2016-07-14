@@ -16,14 +16,14 @@ The purpose of this repository is to host and share demos and workshop materials
 ## Getting Started
 The most up-to-date information can be found at the official BART website: http://mrirecon.github.io/bart.
 
-The workshop material was tested with [BART version 0.3.00](https://github.com/mrirecon/bart/releases/tag/v0.3.00)
+The workshop material was tested with [BART version 0.3.01](https://github.com/mrirecon/bart/releases/tag/v0.3.01)
 
 ### Download
-The source code is available at [https://github.com/mrirecon/bart/archive/v0.3.00.tar.gz](https://github.com/mrirecon/bart/archive/v0.3.00.tar.gz).
+The source code is available at [https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz](https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz).
 Untar and navigate to the bart directory:
 ```bash
-wget https://github.com/mrirecon/bart/archive/v0.3.00.tar.gz
-tar -xvvf v0.3.00.tar.gz && mv bart-0.3.00 bart
+wget https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz
+tar -xvvf v0.3.00.tar.gz && mv bart-0.3.01 bart
 cd bart
 ```
 
