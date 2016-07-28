@@ -23,7 +23,7 @@ The source code is available at [https://github.com/mrirecon/bart/archive/v0.3.0
 Untar and navigate to the bart directory:
 ```bash
 wget https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz
-tar -xvvf v0.3.00.tar.gz && mv bart-0.3.01 bart
+tar -xvvf v0.3.01.tar.gz && mv bart-0.3.01 bart
 cd bart
 ```
 
