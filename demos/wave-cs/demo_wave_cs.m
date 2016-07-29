@@ -1,7 +1,8 @@
 %% Wave-Caipi Compressed Sensing Demo
 % This demo demonstrates ESPRiT reconstruction on Wave-Caipi data using the
 % Berkeley Advanced Reconstruction Toolbox (BART)
-% The datasets are kindly provided by Dr. Berkin at the MGH.
+% The datasets are kindly provided by Dr. Berkin Bilgic at the MGH.
+% http://martinos.org/~berkin/
 % The datasets are coil-compressed for computational efficiency.
 % !!! Note that this is for tutorial purpose only. The dataset has been
 % highly compressed to the point that the results do not look good.
