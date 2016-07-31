@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 SCALE=0.6
 SPOKES=21
