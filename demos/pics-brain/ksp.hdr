@@ -1,0 +1,8 @@
+# Dimensions
+1 180 230 8 1 1 1 1 1 1 1 1 1 1 1 1 
+# Command
+fmac ksp2 mask ksp 
+# Files
+ >ksp <mask <ksp2
+# Creator
+BART v0.3.01-264-g10f0524
