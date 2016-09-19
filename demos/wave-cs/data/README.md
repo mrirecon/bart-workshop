@@ -1,10 +1,8 @@
 # wave-cs-data
 Wave-Caipi dataset for BART workshop demo
 
-This git repo contains Wave-Caipi datasets that were kindly provided by Dr. Berkin Bilgic at the Martinos Center for Biomedical Imaging.
+The Wave-Caipi datasets were kindly provided by Dr. Berkin Bilgic at the Martinos Center for Biomedical Imaging.
 
-## data download
-~~~~~
-cd demos/wave-cs/data
-./download_data_all.py
-~~~~~
+Please download the Wave-Caipi datasets from the following link to the directory demos/wave-cs/data:
+
+https://drive.google.com/folderview?id=0BxOlBDnZVRv6WWVadGtxd2RwYlk&usp=sharing
