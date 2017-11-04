@@ -40,4 +40,5 @@ each directory, and are summarized below.
 1. Reconstruct an axial slice of dynamic contrast enhanced (DCE) data ([`pics-dce`](demos/pics-dce))
 1. Build a GRASP reconstruction tool with bash scripting and BART command-line tools ([`grasp`](demos/grasp))
 1. Build a Wave-CS reconstruction tool in C using the BART C API ([`wave`](demos/wave-cs))
+1. Simulate multi-channel data and computer g-factor using Python and BART([`gfactor`](demos/gfactor-demo))
 
