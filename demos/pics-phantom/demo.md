@@ -38,11 +38,6 @@ dim=256 # ky/kz dims
 bart phantom -x $dim -k -s $nmaps ksp_orig
 ```
 
-To match to the MRI-specific tools, we tranpose the spatial dimensions
-```
-bart reshape 7 1 $dim $dim ksp_orig ksp_orig
-```
-
 Add noise
 ```bash
 noisevar=100
@@ -57,12 +52,13 @@ rmcfl cimg_noise
 ```
 
 Create a variable density Poisson disc sampling pattern and sample k-space. The acceleration factor is given by `yaccel` and `zaccel`.
-A fully sampled calibration region of size `caldim` is added.
+A fully sampled calibration region of size `caldim` is added. To match the 2D k-space dimensions, we will remove singleton dimensions.
 ```bash
 yaccel=1.5
 zaccel=1.5
 caldim=32
 bart poisson -Y $dim -Z $dim -y $yaccel -z $zaccel -C $caldim -v -e mask
+bart squeeze mask mask
 bart fmac ksp_noise mask ksp_und
 ```
 

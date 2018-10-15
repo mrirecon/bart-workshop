@@ -40,9 +40,6 @@ nmaps=8
 bart phantom -x $dim -k -s $nmaps ksp_orig
 
 
-# To match to the MRI-specific tools, we reshape the spatial dimensions
-bart reshape 7 1 $dim $dim ksp_orig ksp_orig
-
 # Add noise
 noisevar=100
 bart noise -n $noisevar ksp_orig ksp_noise
@@ -58,6 +55,7 @@ yaccel=1.5
 zaccel=1.5
 caldim=32
 bart poisson -Y $dim -Z $dim -y $yaccel -z $zaccel -C $caldim -v -e mask
+bart squeeze mask mask
 bart fmac ksp_noise mask ksp_und
 
 # View the mask
