@@ -12,7 +12,7 @@ TOOLBOX_PATH=${TOOLBOX_PATH?="TOOLBOX_PATH not set!"}
 export PATH=${TOOLBOX_PATH}:${PATH}
 
 #VIEWER="bart toimg"
-VIEWER=bartview.py
+VIEWER=bartview3.py
 #VIEWER=viewer
 function cflview () {
 	if [[ $VIEWER == "bart toimg" ]] ; then
