@@ -37,10 +37,13 @@ See the [Quick-Install guide](doc/quick-install.md) for quick installation instr
 The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
 each directory, and are summarized below.
 
-1. Simulate phantom data and compare regularized reconstructions ([`pics-phantom`](demos/pics-phantom))
+1. Introduction to the BART command-line tools ([`pics-phantom`](demos/pics-phantom))
+1. Compute g-factor using Python and BART ([`gfactor`](demos/gfactor-demo))
+1. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](demos/sense-recon))
+
+#### Additional demos:
+1. Simulate phantom data and compare regularized reconstructions  ([`pics-phantom`](demos/pics-phantom))
 1. Reconstruct an axial slice of dynamic contrast enhanced (DCE) data ([`pics-dce`](demos/pics-dce))
 1. Build a GRASP reconstruction tool with bash scripting and BART command-line tools ([`grasp`](demos/grasp))
-1. Build a Wave-CS reconstruction tool in C using the BART C API ([`wave`](demos/wave-cs))
-1. Simulate multi-channel data and computer g-factor using Python and BART([`gfactor`](demos/gfactor-demo))
-1. Create a non-Cartesian SENSE reconstruction binary tool and run it on radial brain data([`sense-recon`](demos/sense-recon))
+1. Use the Wave-CS reconstruction tool using the BART Matlab API ([`wave`](demos/wave-cs))
 

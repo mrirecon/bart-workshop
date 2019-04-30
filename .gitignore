@@ -11,3 +11,5 @@ scratch/
 *.latexmk
 *.fdb_latexmk
 *.fls
+
+.ipynb_checkpoints
