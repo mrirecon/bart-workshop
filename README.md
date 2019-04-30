@@ -37,7 +37,7 @@ See the [Quick-Install guide](doc/quick-install.md) for quick installation instr
 The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
 each directory, and are summarized below.
 
-1. Introduction to the BART command-line tools ([`pics-phantom`](demos/pics-phantom))
+1. Introduction to the BART command-line tools ([`intro`](demos/intro))
 1. Compute g-factor using Python and BART ([`gfactor`](demos/gfactor-demo))
 1. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](demos/sense-recon))
 
