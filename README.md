@@ -1,7 +1,8 @@
 # BART Workshop Materials
 
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
-This material was presented at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
+This material was presented at the [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/). Previously, the material was presented
+at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
 
 ## Purpose
 The purpose of this repository is to host and share demos and workshop materials for BART. From the [website](http://mrirecon.github.io/bart):
@@ -16,14 +17,14 @@ The purpose of this repository is to host and share demos and workshop materials
 ## Getting Started
 The most up-to-date information can be found at the official BART website: http://mrirecon.github.io/bart.
 
-The workshop material was tested with [BART version 0.3.01](https://github.com/mrirecon/bart/releases/tag/v0.3.01)
+The workshop material was tested with [BART version 0.4.04](https://github.com/mrirecon/bart/releases/tag/v0.4.04)
 
 ### Download
-The source code is available at [https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz](https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz).
+The source code is available at [https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz](https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz).
 Untar and navigate to the bart directory:
 ```bash
-wget https://github.com/mrirecon/bart/archive/v0.3.01.tar.gz
-tar -xvvf v0.3.01.tar.gz && mv bart-0.3.01 bart
+wget https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz
+tar -xvvf v0.4.04.tar.gz && mv bart-0.4.04 bart
 cd bart
 ```
 
@@ -41,4 +42,5 @@ each directory, and are summarized below.
 1. Build a GRASP reconstruction tool with bash scripting and BART command-line tools ([`grasp`](demos/grasp))
 1. Build a Wave-CS reconstruction tool in C using the BART C API ([`wave`](demos/wave-cs))
 1. Simulate multi-channel data and computer g-factor using Python and BART([`gfactor`](demos/gfactor-demo))
+1. Create a non-Cartesian SENSE reconstruction binary tool and run it on radial brain data([`sense-recon`](demos/sense-recon))
 
