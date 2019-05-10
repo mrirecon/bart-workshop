@@ -1,7 +1,7 @@
 # BART Workshop Materials
 
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
-This material was presented at the [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/). Previously, the material was presented
+This material will be presented at the [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/). Previously, the material was presented
 at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
 
 ## Purpose
@@ -32,6 +32,17 @@ cd bart
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions.
 
 
+### Demo dependencies
+The demos use Jupyter notebooks with Python and Bash kernels. This is easiest to accomplish with Anaconda.
+After installing Anaconda, install the dependencies:
+```bash
+pip install h5py numpy matplotlib bash_kernel 
+```
+
+Finish installing the Bash kernel with the command,
+```bash
+python -m bash_kernel.install
+```
 
 ## Demos
 The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
