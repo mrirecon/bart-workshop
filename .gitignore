@@ -11,3 +11,8 @@ scratch/
 *.latexmk
 *.fdb_latexmk
 *.fls
+
+
+.ipynb_checkpoints
+
+.DS_Store

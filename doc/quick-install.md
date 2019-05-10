@@ -3,7 +3,7 @@ The quick-install instructions should be enough to get started for Linux or Mac 
 See the [README](https://github.com/mrirecon/bart/blob/master/README) for full installation instructions,
 including Windows support.
 
-These instructions are for [BART version 0.3.01](https://github.com/mrirecon/bart/releases/tag/v0.3.01). Newer versions
+These instructions are for [BART version 0.4.04](https://github.com/mrirecon/bart/releases/tag/v0.4.04). Newer versions
 of BART may require slightly different instructions.
 
 ### Install the required dependencies.
@@ -75,9 +75,14 @@ export PATH=${TOOLBOX_PATH}:${PATH}
 Query the installed version with the command:
 ```bash
 bart version
-#v0.3.01
+#v0.4.04
 ```
-Test the installation by benchmarking the toolbox:
+Test the installation by running the tests:
+```bash
+make utest
+make test
+```
+Check the performance by benchmarking the toolbox:
 ```bash
 bart bench
 #                add (md_zaxpy) | 0.1157 0.1189 0.1170 0.1160 0.1169 | Avg: 0.1169 Max: 0.1189 Min: 0.1157

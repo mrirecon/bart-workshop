@@ -1,0 +1,5 @@
+data/*.hdr
+data/*.cfl
+reco.cfl
+reco.hdr
+sense_recon
