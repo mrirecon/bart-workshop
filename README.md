@@ -2,10 +2,15 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mikgroup/bart-workshop/master?filepath=setup.ipynb)
 
-
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
 This material will be presented at the [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/). Previously, the material was presented
 at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
+
+## **NEW** Run demos in the browser through MyBinder
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mikgroup/bart-workshop/master?filepath=setup.ipynb)  
+[Click the icon](https://mybinder.org/v2/gh/mikgroup/bart-workshop/master?filepath=setup.ipynb)
+
+
 
 ## Purpose
 The purpose of this repository is to host and share demos and workshop materials for BART. From the [website](http://mrirecon.github.io/bart):
