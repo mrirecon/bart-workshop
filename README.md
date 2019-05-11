@@ -51,9 +51,9 @@ python -m bash_kernel.install
 The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
 each directory, and are summarized below.
 
-1. Introduction to the BART command-line tools ([`intro`](demos/intro))
-1. Compute g-factor using Python and BART ([`gfactor`](demos/gfactor-demo))
-1. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](demos/sense-recon))
+1. Introduction to the BART command-line tools ([`intro`](demos/intro/intro.ipynb))
+1. Compute g-factor using Python and BART ([`gfactor`](demos/gfactor-demo/gfactor-demo-real_data.ipynb))
+1. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](demos/sense-recon/sense-recon.ipynb))
 
 #### Additional demos:
 1. Simulate phantom data and compare regularized reconstructions  ([`pics-phantom`](demos/pics-phantom))
