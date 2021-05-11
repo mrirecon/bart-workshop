@@ -19,10 +19,16 @@ Finish installing the Bash kernel with the command,
 python -m bash_kernel.install
 ```
 
-## Demos
+## Schedule
 This folder contains standalone demos that show different BART use cases. The demos are self-documented within
-each directory, and are summarized below.
+each directory, and are summarized below. Each tutorial is set up as jupyter notebook and can interactively be tested using Binder.
 
-1. Introduction to the BART command-line tools ([`intro`](intro/intro.ipynb))
-2. Compute g-factor using Python and BART ([`gfactor`](gfactor-demo/gfactor-demo-real_data.ipynb))
-3. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](sense-recon/sense-recon.ipynb))
+- **Tutorial 1**: Introduction to the BART command-line tools
+  - [Jupyter Notebook](./intro/intro.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/intro/intro.ipynb)
+- **Tutorial 2**: Compute g-factor using Python and BART
+  - [Jupyter Notebook](./gfactor-demo/gfactor-demo-real_data.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/gfactor-demo/gfactor-demo-real_data.ipynb)
+- **Tutorial 3**: Build a non-Cartesian SENSE reconstruction tool with the BART C API
+  - [Jupyter Notebook](./sense-recon/sense-recon.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/sense-recon/sense-recon.ipynb)
