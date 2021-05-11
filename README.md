@@ -3,21 +3,14 @@
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
 
 
-## Purpose
-The purpose of this repository is to host and share demos and workshop materials for BART. From the [website](http://mrirecon.github.io/bart):
+**Purpose**  
+The purpose of this repository is to host and share demos and workshop materials for BART.
 
-> The Berkeley Advanced Reconstruction Toolbox (BART) is a free and open-source image-reconstruction framework
-> for Computational Magnetic Resonance Imaging. It consists of a programming library and a toolbox of command-line
-> programs. The library provides common operations on multi-dimensional arrays, Fourier and wavelet transforms,
-> as well as generic implementations of iterative optimization algorithms. The command-line tools provide direct
-> access to basic operations on multi-dimensional arrays as well as efficient implementations of many calibration
-> and reconstruction algorithms for parallel imaging and compressed sensing.
-
-## Getting Started
+**Getting Started**  
 The most up-to-date information can be found at the official BART website: http://mrirecon.github.io/bart.
 
-## Quick Installation
-See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions.
+**Quick Installation**  
+See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
 
 ## ISMRM Workshop 2016
