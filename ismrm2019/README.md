@@ -25,10 +25,10 @@ each directory, and are summarized below. Each tutorial is set up as jupyter not
 
 - **Tutorial 1**: Introduction to the BART command-line tools
   - [Jupyter Notebook](./intro/intro.ipynb)
-  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/intro/intro.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=ismrm2019/intro/intro.ipynb)
 - **Tutorial 2**: Compute g-factor using Python and BART
   - [Jupyter Notebook](./gfactor-demo/gfactor-demo-real_data.ipynb)
-  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/gfactor-demo/gfactor-demo-real_data.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=ismrm2019/gfactor-demo/gfactor-demo-real_data.ipynb)
 - **Tutorial 3**: Build a non-Cartesian SENSE reconstruction tool with the BART C API
   - [Jupyter Notebook](./sense-recon/sense-recon.ipynb)
-  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nscholand/bart-workshop/new_layout?filepath=ismrm2019/sense-recon/sense-recon.ipynb)
+  - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=ismrm2019/sense-recon/sense-recon.ipynb)
