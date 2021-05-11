@@ -31,3 +31,9 @@ See the [Quick-Install guide](doc/quick-install.md) for quick installation instr
 **Meeting**: [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/)  
 **Material**: [`./ismrm2019`](./ismrm2019/)  
 **Date**: May 12, 2019
+
+## ISMRM Workshop 2021
+**Title**: Software Demos for MRI  
+**Meeting**: [2021 ISMRM Annual Meeting, Online](https://www.ismrm.org/21m/)  
+**Material**: [`./ismrm2021`](./ismrm2021/)  
+**Date**: May 15, 2021

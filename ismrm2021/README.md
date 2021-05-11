@@ -1,0 +1,16 @@
+## ISMRM 2021
+
+This material will be presented at the ISMRM Workshop 2021.
+
+**Title**: Software Demos for MRI  
+**Meeting**: [2021 ISMRM Annual Meeting, Online](https://www.ismrm.org/21m/)  
+**Date**: May 15, 2021
+
+
+## Schedule
+This folder contains standalone demos that show different BART use cases. The demos are self-documented within
+each directory, and are summarized below. Each tutorial is set up as jupyter notebook and can interactively be tested using Google Colaboratory.
+
+- **Others**: How to Run BART on Google Colaboratory
+  - [Jupyter Notebook](./bart_on_colab/colab_gpu_tutorial.ipynb)
+  - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nscholand/bart-workshop/blob/new_layout/ismrm2021/bart_on_colab/colab_gpu_tutorial.ipynb)
