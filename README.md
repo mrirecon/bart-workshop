@@ -1,15 +1,6 @@
 # BART Workshop Materials
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=setup.ipynb)
-
 This repository contains information and demos for the [Berkeley Advanced Reconstruction Toolbox (BART)](http://mrirecon.github.io/bart).
-This material will be presented at the [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/). Previously, the material was presented
-at the [2016 ISMRM Workshop on Data Sampling & Image Reconstruction](http://www.ismrm.org/workshops/Data16/).
-
-## **NEW** Run demos in the browser through MyBinder
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=setup.ipynb)
-[Click the icon](https://mybinder.org/v2/gh/mrirecon/bart-workshop/master?filepath=setup.ipynb)
-
 
 
 ## Purpose
@@ -25,44 +16,18 @@ The purpose of this repository is to host and share demos and workshop materials
 ## Getting Started
 The most up-to-date information can be found at the official BART website: http://mrirecon.github.io/bart.
 
-The workshop material was tested with [BART version 0.4.04](https://github.com/mrirecon/bart/releases/tag/v0.4.04)
-
-### Download
-The source code is available at [https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz](https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz).
-Untar and navigate to the bart directory:
-```bash
-wget https://github.com/mrirecon/bart/archive/v0.4.04.tar.gz
-tar -xvvf v0.4.04.tar.gz && mv bart-0.4.04 bart
-cd bart
-```
-
-### Quick Installation
+## Quick Installation
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions.
 
 
-### Demo dependencies
-The demos use Jupyter notebooks with Python and Bash kernels. This is easiest to accomplish with Anaconda.
-After installing Anaconda, install the dependencies:
-```bash
-pip install h5py numpy matplotlib bash_kernel 
-```
+## ISMRM Workshop 2016
+**Title**: ISMRM Workshop on Data Sampling & Image Reconstruction  
+**Meeting**: [2016 ISMRM Annual Meeting, Sedona, AZ, USA](http://www.ismrm.org/workshops/Data16/)  
+**Material**: [`./ismrm2016`](./ismrm2016/)  
+**Date**: 2016
 
-Finish installing the Bash kernel with the command,
-```bash
-python -m bash_kernel.install
-```
-
-## Demos
-The [`demos`](demos) directory contains standalone demos that show different BART use cases. The demos are self-documented within
-each directory, and are summarized below.
-
-1. Introduction to the BART command-line tools ([`intro`](demos/intro/intro.ipynb))
-1. Compute g-factor using Python and BART ([`gfactor`](demos/gfactor-demo/gfactor-demo-real_data.ipynb))
-1. Build a non-Cartesian SENSE reconstruction tool with the BART C API ([`sense-recon`](demos/sense-recon/sense-recon.ipynb))
-
-#### Additional demos:
-1. Simulate phantom data and compare regularized reconstructions  ([`pics-phantom`](demos/pics-phantom))
-1. Reconstruct an axial slice of dynamic contrast enhanced (DCE) data ([`pics-dce`](demos/pics-dce))
-1. Build a GRASP reconstruction tool with bash scripting and BART command-line tools ([`grasp`](demos/grasp))
-1. Use the Wave-CS reconstruction tool using the BART Matlab API ([`wave`](demos/wave-cs))
-
+## ISMRM Workshop 2019
+**Title**: BART Reconstruction Toolbox / Iterative Reconstruction Toolbox in Python  
+**Meeting**: [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/)  
+**Material**: [`./ismrm2019`](./ismrm2019/)  
+**Date**: May 12, 2019
