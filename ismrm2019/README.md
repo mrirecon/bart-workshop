@@ -8,6 +8,9 @@ This material was presented at the ISMRM Workshop 2019.
 
 
 ### Demo dependencies
+
+The workshop material was tested with [BART version 0.4.04](https://github.com/mrirecon/bart/releases/tag/v0.4.04).
+
 The demos use Jupyter notebooks with Python and Bash kernels. This is easiest to accomplish with Anaconda.
 After installing Anaconda, install the dependencies:
 ```bash
