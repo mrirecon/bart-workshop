@@ -1,6 +1,6 @@
 ## ISMRM 2019
 
-This material was presented at the ISMRM Workshop 2019.
+This material was presented at the ISMRM Annual Meeting 2019.
 
 **Title**: BART Reconstruction Toolbox / Iterative Reconstruction Toolbox in Python  
 **Meeting**: [2019 ISMRM Annual Meeting, Montreal, Canada](https://www.ismrm.org/19m/)  
