@@ -4,5 +4,3 @@ libfftw3-dev
 liblapacke-dev
 libpng-dev
 libopenblas-dev
-bc
-libgtk-3-dev
