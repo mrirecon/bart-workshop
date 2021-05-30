@@ -1,0 +1,1 @@
+rm -r *.cfl *.hdr l2_toy.* l2_toy_gpu_id checkpoint prior utils.py
