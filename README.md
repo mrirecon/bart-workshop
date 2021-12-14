@@ -12,6 +12,12 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**  
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+## MRI Together 2021
+**Title**: A Hands-On Introduction to BART   
+**Meeting**: [2021 ESMRMB MRI Together, Online](https://mritogether.github.io/)   
+**Material**: [`./mri_together_2021/`](./mri_together_2021/)   
+**Date**: December 15, 2021
+
 ## ISMRM Annual Meeting 2021
 **Title**: Software Demos for MRI   
 **Meeting**: [2021 ISMRM Annual Meeting, Online](https://www.ismrm.org/21m/)   
