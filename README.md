@@ -12,6 +12,12 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**  
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+## Joint Annual Meeting ISMRM-ESMRMB 2022
+**Title**: Secret Session BART  
+**Meeting**: [2022 Joint Annual Meeting ISMRM-ESMRMB & ISMRT 31st Annual Meeting, London, UK](https://www.ismrm.org/22m/)  
+**Material**: [`./ismrm2022`](./ismrm2022/)  
+**Date**: May 11, 2022
+
 ## MRI Together 2021
 **Title**: A Hands-On Introduction to BART   
 **Meeting**: [2021 ESMRMB MRI Together, Online](https://mritogether.github.io/)   
