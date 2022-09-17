@@ -6,9 +6,9 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.13.6
+      jupytext_version: 1.14.1
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -21,7 +21,7 @@ jupyter:
 
 **Institution**: Graz University of Technology
 
-This tutorial introduces the Bloch simulation tool `sim` added to the [official BART repository](https://github.com/mrirecon/bart) with the commit `a0b73c9`.
+This tutorial introduces the Bloch simulation tool `sim` added to the [official BART repository](https://github.com/mrirecon/bart). This tutorial is based on commit `e641e74`, but should be support in all future versions of BART, too. Please contact us, when you experience any issue with this tutorial!
 <!-- #endregion -->
 
 ### 0. Setup BART on Google Colab
@@ -161,7 +161,7 @@ An exemplaric simulation call look like
 
 ```python
 # FLASH simulation
-! bart sim --ODE --seq flash,tr=0.0041,te=0.0025,nrep=1000,ipl=0,ppl=0,trf=0.001,fa=8,bwtp=4 -1 3:3:1 -2 1:1:1 simu
+! bart sim --ODE --seq FLASH,TR=0.0041,TE=0.0025,Nrep=1000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu
 ```
 
 It creates an ODE solver based Bloch simulation of a FLASH sequence
@@ -183,7 +183,7 @@ Feel free to play with the parameters in the call above. Here is an additional e
 
 ```python
 # FLASH simulation
-! bart sim --ODE --seq ir-bssfp,tr=0.0045,te=0.00225,nrep=1000,ipl=0,pinv,ppl=0.0225,trf=0.001,fa=45,bwtp=4 -1 3:3:1 -2 1:1:1 simu
+! bart sim --ODE --seq IR-BSSFP,TR=0.0045,TE=0.00225,Nrep=1000,ipl=0,pinv,ppl=0.0225,Trf=0.001,FA=45,BWTP=4 -1 3:3:1 -2 1:1:1 simu
                 
 plot('simu', 'repetition $n$ [n*TR]', '|M$_{xy}$| [a.u.]')
 ```
@@ -213,7 +213,7 @@ $$
 
 ```python
 # ODE Simulation with very short pulses (-> close to hard pulses)
-! bart sim --ODE --seq ir-bssfp,tr=0.0045,te=0.00225,nrep=1000,ipl=0,pinv,ppl=0.0001,trf=0.0001,fa=45,bwtp=4 -1 3:3:1 -2 1:1:1 ode
+! bart sim --ODE --seq IR-BSSFP,TR=0.0045,TE=0.00225,Nrep=1000,ipl=0,pinv,ppl=0.0002,Trf=0.0001,FA=45,BWTP=4 -1 3:3:1 -2 1:1:1 ode
                 
                 
 # Analytical Model
@@ -243,7 +243,7 @@ for i in `seq 0 $((Nspins-1))`;
 do
     OFF=$(echo $i $Nspins $TE | awk '{printf "%3.6f\n",2*3.1415*1/$3*$1/$2}') # [rad/s]
 
-    bart sim --ODE --seq bssfp,tr=0.0045,te=$TE,nrep=$REP,ipl=0,pinv,ppl=$TE,trf=0.001,fa=45,bwtp=4,off=$OFF -1 $T1:$T1:1 -2 $T2:$T2:1 sig_$(printf "%03.0f" $i) &>/dev/null
+    bart sim --ODE --seq BSSFP,TR=0.0045,TE=$TE,Nrep=$REP,ipl=0,pinv,ppl=$TE,Trf=0.001,FA=45,BWTP=4,off=$OFF -1 $T1:$T1:1 -2 $T2:$T2:1 sig_$(printf "%03.0f" $i) &>/dev/null
     
     bart slice 5 $((REP-1)) sig_$(printf "%03.0f" $i) sig2_$(printf "%03.0f" $i)
 done
@@ -273,14 +273,17 @@ REP=1
 TRF=0.001
 TE=0.0015
 TR=0.003
+FA=30
+NSPINS=100
 
-Nspins=100
+G_SS=0.012 # [T/m]
+DISTANCE=0.010 # [m]
 
-for i in `seq 0 $((Nspins-1))`;
+for i in `seq 0 $((NSPINS-1))`;
 do
-    MOM=$(echo $i $Nspins $TRF | awk '{printf "%3.6f\n",4.256*2*3.1415*1/$3*($1/$2-0.5)}') # [rad/s]
+    Z=$(echo $DISTANCE $i $NSPINS | awk '{printf "%f\n",$1/$3*($2-$3/2)}') # [rad/s]
 
-    bart sim --ODE --seq flash,tr=$TR,te=$TE,nrep=$REP,ipl=0,ppl=0,trf=$TRF,fa=30,bwtp=1,mom-sl=$MOM -1 $T1:$T1:1 -2 $T2:$T2:1 sig_$(printf "%03.0f" $i)
+    TSIM=$(bart sim --ODE --seq FLASH,TR=$TR,TE=$TE,Nrep=$REP,ipl=0,ppl=0,Trf=$TRF,FA=$FA,BWTP=1,slice-thickness=${Z},sl-grad=${G_SS},Nspins=1 -1 $T1:$T1:1 -2 $T2:$T2:1 sig_$(printf "%03.0f" $i))
     
     bart slice 5 $((REP-1)) sig_$(printf "%03.0f" $i) sig2_$(printf "%03.0f" $i)
 done
@@ -317,7 +320,7 @@ for i in `seq 0 $((${#T1[@]}-1))`;
 do
     echo -e "Tube $i\t T1: ${T1[$i]} s,\tT2[$i]: ${T2[$i]} s"
 
-    bart sim --ODE --seq ir-flash,tr=$TR,te=$TE,nrep=$REP,ipl=0,pinv,ppl=$TE,trf=0,fa=6,bwtp=4 -1 ${T1[$i]}:${T1[$i]}:1 -2 ${T2[$i]}:${T2[$i]}:1 _basis_simu$(printf "%02d" $i)
+    bart sim --ODE --seq IR-FLASH,TR=$TR,TE=$TE,Nrep=$REP,ipl=0,pinv,ppl=$TE,Trf=0,FA=6,BWTP=4 -1 ${T1[$i]}:${T1[$i]}:1 -2 ${T2[$i]}:${T2[$i]}:1 _basis_simu$(printf "%02d" $i)
 done
 
 ## Join all individual simulations
@@ -370,23 +373,10 @@ It exploits the repeating patterns in sequences efficiently and reduced the comp
 # FLASH simulation
 
 # Measure time of ODE simulation
-start_time=$(date +%s.%3N)
-
-bart sim --ODE --seq flash,tr=0.0041,te=0.0025,nrep=3000,ipl=0,ppl=0,trf=0.001,fa=8,bwtp=4 -1 3:3:1 -2 1:1:1 simu
-                
-end_time=$(date +%s.%3N)
-
-TODE=$(echo "$end_time-$start_time" | bc)
-
+TODE=$(bart sim --ODE --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu)
 
 # Measure time of STM simulation
-start_time2=$(date +%s.%3N)
-
-bart sim --STM --seq flash,tr=0.0041,te=0.0025,nrep=3000,ipl=0,ppl=0,trf=0.001,fa=8,bwtp=4 -1 3:3:1 -2 1:1:1 simu
-                
-end_time2=$(date +%s.%3N)
-
-TSTM=$(echo "$end_time2-$start_time2" | bc)
+TSTM=$(bart sim --STM --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu)
 
 # Print Result
 echo -e "Elapsed time\nODE: ${TODE} s\tSTM: ${TSTM} s"
