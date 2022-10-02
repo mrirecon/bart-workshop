@@ -373,10 +373,25 @@ It exploits the repeating patterns in sequences efficiently and reduced the comp
 # FLASH simulation
 
 # Measure time of ODE simulation
-TODE=$(bart sim --ODE --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu)
+
+start_time=$(date +%s.%3N)
+
+bart sim --ODE --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu
+
+end_time=$(date +%s.%3N)
+
+TODE=$(echo "$end_time-$start_time" | bc)
+
+
 
 # Measure time of STM simulation
-TSTM=$(bart sim --STM --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu)
+start_time2=$(date +%s.%3N)
+
+bart sim --STM --seq FLASH,TR=0.0041,TE=0.0025,Nrep=3000,ipl=0,ppl=0,Trf=0.001,FA=8,BWTP=4 -1 3:3:1 -2 1:1:1 simu
+
+end_time2=$(date +%s.%3N)
+
+TSTM=$(echo "$end_time2-$start_time2" | bc)
 
 # Print Result
 echo -e "Elapsed time\nODE: ${TODE} s\tSTM: ${TSTM} s"
