@@ -768,16 +768,20 @@ else
     GPU=''
 fi
 
-bart moba -L $GPU -d4 -l1 -i8 -C100 -j0.09 -B0.0 -n -t traj_moba1 ksp_cc_moba1 TI reco_moba 
+bart moba -L $GPU -d4 -i8 -l1 -C100 -j0.09 -B0.0 --other pinit=1:1:2:1 --scale_data=5000. --scale_psf=1000. --normalize_scaling -t traj_moba1 ksp_cc_moba1 TI reco_moba 
 
-#-L  --- to select look-locker model
-#-g  --- to use GPU
-#-d  --- debug level
-#-l1 --- to use l1-Wavelet regularization
-#-i  --- number of Newton-steps
-#-C  --- maximum number of inner iterations (FISTA)
-#-j  --- minimum regularization parameter
-#-B  --- lower bound for relaxivity (R1s > 0)
+#-L                         --- to select look-locker model
+#-g                         --- to use GPU
+#-d                         --- debug level
+#-l1                        --- to use l1-Wavelet regularization
+#-i                         --- number of Newton-steps
+#-C                         --- maximum number of inner iterations (FISTA)
+#-j                         --- minimum regularization parameter
+#-B                         --- lower bound for relaxivity (R1s > 0)
+#--other pinit=%f:%f:%f:%f  --- Initialization of parameter maps: Mss, M0, R1s
+#--scale_data=%f            --- Scaling of data
+#--scale_psf=%f             --- Scaling of PSF
+#--normalize_scaling        --- Normalize scaling by (data / psf)
 
 # NOTE: There is no need of input of coil sensitivity maps, because we jointly estimate coils using model-based reconstruction
 ```
