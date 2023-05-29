@@ -1,0 +1,13 @@
+# Tex stuff
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.cfl
+*.hdr
+*.txt

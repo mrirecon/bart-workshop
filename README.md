@@ -12,6 +12,13 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**  
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+
+## ISMRM Annual Meeting 2023
+**Title**: Secret Session BART  
+**Meeting**: [2023 ISMRM & ISMRT Annual Meeting & Exhibition, Toronto, Canada](https://www.ismrm.org/23m/)  
+**Material**: [`./ismrm2023`](./ismrm2023/)  
+**Date**: June 08, 2023
+
 ## Joint Annual Meeting ISMRM-ESMRMB 2022
 **Title**: Secret Session BART  
 **Meeting**: [2022 Joint Annual Meeting ISMRM-ESMRMB & ISMRT 31st Annual Meeting, London, UK](https://www.ismrm.org/22m/)  
