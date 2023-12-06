@@ -12,6 +12,11 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**  
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+## MRI Together 2023
+**Title**: Reproducible MRI Reconstruction with BART
+**Meeting**: [2023 ESMRMB MRI Together, Online](https://mritogether.github.io/23m)   
+**Material**: [`./mri_together_2023/`](./mri_together_2023/)   
+**Date**: December 6, 2023
 
 ## ISMRM Annual Meeting 2023
 **Title**: Secret Session BART  
