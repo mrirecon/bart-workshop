@@ -15,7 +15,7 @@ See the [Quick-Install guide](doc/quick-install.md) for quick installation instr
 ## ISMRM Workshop Motion Correction 2024
 **Title**: Motion Corrections in BART  
 **Meeting**: [2024 ISMRM Workshop on Motion Correction in MR, Québec City, QC, Canada](https://www.ismrm.org/workshops/2024/Motion/)   
-**Material**: [`./ismrm2024`](./ismrm2024/)   
+**Material**: [`./ismrm_motion_2024`](./ismrm_motion_2024/)   
 **Date**: September 3, 2024
 
 ## MRI Together 2023

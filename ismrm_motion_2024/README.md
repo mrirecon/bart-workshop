@@ -7,4 +7,4 @@
 - [Jupyter Notebook](./demo_motion.ipynb)
 
 ##### Interactive Notebooks
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/ismrm2024/demo_motion.ipynb)
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/ismrm_motion_2024/demo_motion.ipynb)
