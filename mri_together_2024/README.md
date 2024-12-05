@@ -4,7 +4,7 @@ This material will be presented at the ESMRMB MRI Together Workshop 2024.
 
 **Title**: Open Science and Free Software  
 **Session**: At second sight - open science projects that succeeded at their own pace  
-**Meeting**: [MRI Together 2023 - Global workshop on open, reproducible, and inclusive MR research](https://mritogether.esmrmb.org/24m/)  
+**Meeting**: [MRI Together 2024 - Global workshop on open, reproducible, and inclusive MR research](https://mritogether.esmrmb.org/24m/)  
 **Date**: December 5, 2024  
 **Time**: 20:00 pm (UTC-6)  
 
