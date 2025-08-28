@@ -59,7 +59,7 @@ def absImageFromCFL(filename):
 def plotDict(ax, n=5):
     indx = np.random.randint(0,100000, size=n)
     filename="./subspace_dict"
-    signals= imageFromCFL(filename)[:,indx].T
+    signals= realImageFromCFL(filename)[:,indx].T
     cmap=mpl.colormaps["Set1"]
     ax.set_xlabel("time [s]")
     ax.set_ylabel("signal")
@@ -74,7 +74,7 @@ def plotPCACoeff(ax,nCoef=4,n=30):
     ax.set_xlabel("principal component")
     ax.set_ylabel("rel. contribution")
     ax.set_title("Accumulated PCA Coefficients",fontdict={'fontsize':12})
-    S = imageFromCFL("./S")
+    S = realImageFromCFL("./S")
 
     cumSum = np.cumsum(S)
     cumSum /= cumSum[-1]
@@ -91,7 +91,7 @@ def plotTemporalBasis(ax, n=5):
     ax.set_title("Temporal Basis",fontdict={'fontsize':12})
     ax.set_xlabel("time [s]")
     ax.set_ylabel("signal")
-    U = imageFromCFL("./U").T[:n]
+    U = realImageFromCFL("./U").T[:n]
     time =np.arange(0, len(U[0])) * 6e-3
     cmap=mpl.colormaps["Set1"]
     for i,signal in enumerate(U):
