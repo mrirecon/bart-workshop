@@ -26,7 +26,9 @@ def plotTemporalEvolution():
         ax.set_xticks([])
         ax.set_yticks([])
         ax.set_title("t={}".format(i), fontdict={'fontsize':12})
-        ax.imshow(img[:,:,i], cmap=createNewMap("gray"), clim=(None, 0.125))
+        ax.imshow(img[:,:,i], cmap=createNewMap("gray"), clim=(None, 0.125), 
+                  origin="upper")
+                  
     plt.tight_layout()
     plt.show()
 
