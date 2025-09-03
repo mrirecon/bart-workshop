@@ -3,7 +3,7 @@ Demonstrate subspace reconstruction for inversion recovery FLASH acquisition bot
 
 ## Requirements
 ```
-bart version v0.9.00-1128-g995d362
+bart version v0.9.00-1131-g7dd53c3 
 ```
 
 Install python packages in virtual environment. 
