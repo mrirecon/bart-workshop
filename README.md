@@ -12,6 +12,12 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+## DACH_NORDIC ISMRM 2025
+**Title**: Non-Cartesian T1 | Subspace-Constrained Reconstruction
+**Meeting**: [2025 DACH-Nordic ISMRM 2025, Kiel, Germany](https://ismrm-dach-2025.moincc.de/)
+**Material**: [./dach_ismrm2025/subspace/](./dach_ismrm2025/subspace)
+**Date**: September 14, 2025
+
 ## DS-ISMRM PhD Training 2025
 **Title**: Translational cardiovascular MR Imaging
 **Meeting**: [2025 DS-ISMRM PhD Training, Ulm, Germany](https://www.uni-ulm.de/einrichtungen/moman/forschungsbereiche/academy/phd-training-2025)
