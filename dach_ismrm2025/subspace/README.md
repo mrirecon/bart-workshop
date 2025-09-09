@@ -2,7 +2,7 @@
 Demonstrate subspace reconstruction for inversion recovery FLASH acquisition both on numerical phantom and data acquired with pulseq sequence generated with `bart seq`.
 
 - [Jupyter Notebook](./tutorial.ipynb)
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/dach-ismrm_2025/subspace/tutorial_colab.ipynb)
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/dach_ismrm2025/subspace/tutorial_colab.ipynb)
 
 
 
