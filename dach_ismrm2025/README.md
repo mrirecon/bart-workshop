@@ -11,6 +11,6 @@ This material will be presented at the DACH+NORDIC ISMRM in Kiel.
 
 Material:
 - Part 1: [Introduction](./introduction)
-- Part 2:
+- Part 2: [Sequence framework](./sequence)
 - Part 3: [Subspace Tutorial](./subspace)
 
