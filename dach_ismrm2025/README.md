@@ -10,6 +10,7 @@ This material will be presented at the DACH+NORDIC ISMRM in Kiel.
 
 
 Material:
-- Part 1: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/dach_ismrm2025/introduction/introduction.ipynb)
+- Part 1: [Introduction](./introduction)
+- Part 2:
 - Part 3: [Subspace Tutorial](./subspace)
 
