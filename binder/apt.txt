@@ -1,4 +1,4 @@
-gcc
+gcc-12
 make
 libfftw3-dev
 liblapacke-dev

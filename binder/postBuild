@@ -5,10 +5,7 @@ python -m bash_kernel.install
 
 git clone https://github.com/mrirecon/bart/
 cd bart
-git checkout v0.9.00
+git checkout d2896b04cb9a0b69c4ec26bbf790d73fcce29638
 PARALLEL=1 make
 cd ..
-
-
-
 
