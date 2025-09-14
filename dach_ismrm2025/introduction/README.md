@@ -9,6 +9,6 @@ This material will be presented at the DACH+NORDIC ISMRM in Kiel.
 **Time**: 13:00 pm  
 
 
-* [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/dach_ismrm2025/introduction/introduction.ipynb)
-* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/git/https%3A%2F%2Fgitlab.tugraz.at%2Fibi%2Fmrirecon%2F%2Ftutorials%2F%2Fbart-workshop/master?urlpath=%2Fdoc%2Ftree%2Fdach_ismrm2025/introduction/introduction.ipynb)
+* [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mrirecon/bart-workshop/blob/master/dach_ismrm2025/introduction/introduction_exercise.ipynb)
+* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/git/https%3A%2F%2Fgitlab.tugraz.at%2Fibi%2Fmrirecon%2F%2Ftutorials%2F%2Fbart-workshop/master?urlpath=%2Fdoc%2Ftree%2Fdach_ismrm2025/introduction/introduction_exercise.ipynb)
 
