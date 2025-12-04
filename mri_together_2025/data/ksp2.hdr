@@ -1,0 +1,8 @@
+# Dimensions
+1 512 377 16 1 1 1 1 1 1 1 1 1 1 1 1 
+# Command
+copy ksp_raw ksp2 
+# Files
+ <>ksp2 <ksp_raw
+# Creator
+BART v0.9.00-1413-g88bade9

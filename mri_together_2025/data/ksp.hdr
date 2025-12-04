@@ -1,0 +1,8 @@
+# Dimensions
+1 512 377 16 1 1 1 1 1 1 1 1 1 1 1 1 
+# Command
+slice 10 1 ksp_raw ksp 
+# Files
+ >ksp <ksp_raw
+# Creator
+BART v0.9.00-1413-g88bade9
