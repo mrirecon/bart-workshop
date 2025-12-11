@@ -1,8 +1,0 @@
-# Dimensions
-1 1 377 16 1 1 1 1 1 1 1 1 1 1 1 1 
-# Command
-copy noise_raw noise2 
-# Files
- <>noise2 <noise_raw
-# Creator
-BART v0.9.00-1413-g88bade9
