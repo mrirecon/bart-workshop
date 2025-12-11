@@ -12,6 +12,13 @@ The most up-to-date information can be found at the official BART website: http:
 **Quick Installation**
 See the [Quick-Install guide](doc/quick-install.md) for quick installation instructions for BART.
 
+
+## MRI Together 2025
+**Title**: BART Sequence Programming, Simulation, Reconstruction
+**Meeting**: [2025 ESMRMB MRI Together, Online](https://mritogether.github.io/25m)
+**Material**: [`./mri_together_2025/`](./mri_together_2025/)
+**Date**: December 11, 2025
+
 ## DACH+NORDIC ISMRM 2025
 **Title**: Non-Cartesian T1 | Subspace-Constrained Reconstructio+
 **Meeting**: [2025 DACH-Nordic ISMRM 2025, Kiel, Germany](https://ismrm-dach-2025.moincc.de/)

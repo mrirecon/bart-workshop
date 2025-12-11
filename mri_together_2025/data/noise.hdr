@@ -1,8 +1,8 @@
 # Dimensions
-512 1 1 16 1 1 1 1 1 1 1 1 1 1 1 1 
+256 1 1 16 1 1 1 1 1 1 1 1 1 1 1 1 
 # Command
-twixread -A -N pulseq.dat noise 
+copy noise_raw noise 
 # Files
- >noise <pulseq.dat
+ <>noise <noise_raw
 # Creator
 BART v0.9.00-1413-g88bade9
